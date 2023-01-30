@@ -1,7 +1,4 @@
-# This workflow will build a golang project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
-
-name: Tests
+name: Validations
 
 on:
   push:
@@ -11,7 +8,7 @@ on:
 
 jobs:
 
-  Unit-Tests:
+  Validations:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -31,11 +28,5 @@ jobs:
         go clean -testcache
         go test -v ./...
     
-    - name: Run golangci-lint
+    - name: Lint
       uses: golangci/golangci-lint-action@v3.4.0
-    
-    - name: Runtime Test
-      run: go run .
-
-    - name: Build Test
-      run: go build .

@@ -36,16 +36,6 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
-        
-        - name: Set up Go
-          uses: actions/setup-go@v3
-          with:
-            go-version: 1.19
-            check-latest: true
-            cache: true
-            
-        - run: go mod tidy
-            
         - uses: golangci/golangci-lint-action@v3.4.0
           with:
             version: latest

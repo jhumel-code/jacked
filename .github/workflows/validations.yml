@@ -44,7 +44,9 @@ jobs:
             check-latest: true
             cache: true
             
-        - run: go mod tidy
+        - run: |
+            go clean -modcache
+            go mod tidy
             
         - uses: golangci/golangci-lint-action@v3
           with:

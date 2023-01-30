@@ -38,3 +38,4 @@ jobs:
         - uses: golangci/golangci-lint-action@v3.4.0
           with:
             skip-pkg-cache: true
+            skip-go-installation: true

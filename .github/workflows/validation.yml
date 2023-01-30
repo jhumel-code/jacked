@@ -6,9 +6,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
 jobs:
 
-  Validations:
+  Unit-Tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -20,13 +23,17 @@ jobs:
         check-latest: true
         cache: true
 
-    - run: go mod tidy
-
     - name: Unit Tests
       run: |
         cd test
         go clean -testcache
         go test -v ./...
     
-    - name: Lint
-      uses: golangci/golangci-lint-action@v3.4.0
+  Lint-Check:
+      name: Lint
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: golangci/golangci-lint-action@v3.4.0
+          with:
+            skip-pkg-cache: true

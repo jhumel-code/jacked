@@ -30,7 +30,10 @@ jobs:
         cd test
         go clean -testcache
         go test -v ./...
-        
+    
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v3.4.0
+    
     - name: Runtime Test
       run: go run .
 

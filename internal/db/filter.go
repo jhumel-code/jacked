@@ -49,7 +49,7 @@ func filter(vulnerabilities *[]model.Vulnerability, ignore *config.Vulnerability
 
 		// CVEs Filter
 		if enabledfilterCVE {
-			id := vulnerability.Id
+			id := vulnerability.CVE
 			cves := ignore.CVE
 			filterCVE(id, cves, index)
 		}

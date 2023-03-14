@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"os"
 	"strings"
 	"time"
 
@@ -25,18 +24,17 @@ func PrintSPDX(formatType string, image *string, results []model.ScanResult) {
 		if err != nil {
 			log.Errorln(err.Error())
 		}
-		fmt.Printf("%+v\n", string(result))
+		log.Printf("%+v\n", string(result))
 	case "json":
 		result, err := json.MarshalIndent(spdx, "", " ")
 		if err != nil {
 			log.Errorln(err.Error())
 		}
-		fmt.Printf("%+v\n", string(result))
+		log.Printf("%+v\n", string(result))
 	case "tag-value":
 		printSpdxTagValue(image, results)
 	default:
-		log.Error("Format type not found")
-		os.Exit(1)
+		log.Printf("Format type not found")
 	}
 }
 

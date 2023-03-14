@@ -12,9 +12,3 @@ type Result struct {
 	Description    string `json:"description"`
 	CVSS           CVSS   `json:"cvss"`
 }
-
-type CVSS struct {
-	Version   string  `json:"version"`
-	BaseScore float64 `json:"base_score"`
-	Severity  string  `json:"severity"`
-}

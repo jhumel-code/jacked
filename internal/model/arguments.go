@@ -18,5 +18,4 @@ type Arguments struct {
 	Dir                 *string
 	Tar                 *string
 	ExcludedFilenames   *[]string
-	FailCriteria        *string
 }

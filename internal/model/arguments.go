@@ -2,6 +2,7 @@ package model
 
 type Arguments struct {
 	Image               *string
+	SbomFile            *string
 	Output              *string
 	Quiet               *bool
 	OutputFile          *string
@@ -17,4 +18,5 @@ type Arguments struct {
 	Dir                 *string
 	Tar                 *string
 	ExcludedFilenames   *[]string
+	FailCriteria        *string
 }

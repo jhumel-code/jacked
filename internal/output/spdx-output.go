@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -34,7 +35,8 @@ func PrintSPDX(formatType string, image *string, results []model.ScanResult) {
 	case "tag-value":
 		printSpdxTagValue(image, results)
 	default:
-		fmt.Printf("Format type not found")
+		log.Error("Format type not found")
+		os.Exit(1)
 	}
 }
 
@@ -132,7 +134,7 @@ func GetSpdxTagValues(image *string, results []model.ScanResult) (spdxTagValues 
 			spdxutils.LicensesDeclared(&result.Package), // PackageLicenseConcluded
 			spdxutils.LicensesDeclared(&result.Package), // PackageLicenseDeclared
 			spdxutils.NoAssertion,                       // PackageCopyrightText
-			formatCVEList(cves),						 // Vulnerabilities
+			formatCVEList(cves),                         // Vulnerabilities
 		))
 
 		for _, ref := range spdxutils.ExternalRefs(&result.Package) {
